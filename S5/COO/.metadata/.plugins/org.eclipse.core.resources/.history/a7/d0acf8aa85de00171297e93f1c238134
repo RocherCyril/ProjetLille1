@@ -1,0 +1,5 @@
+package pluginFin;
+
+public class SimplePluginObserver {
+
+}

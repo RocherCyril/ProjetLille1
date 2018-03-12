@@ -1,0 +1,127 @@
+package pluginFin;
+
+import java.awt.*;
+import java.awt.event.*;
+
+import javax.swing.*;
+
+import fileEvent.FileEvent;
+import fileEvent.FileListener;
+
+import java.util.ArrayList;
+import java.util.List;
+import fileEvent.FileChecker;
+
+public class PluginsGraphics {
+	
+	private JMenu menu;
+	private JTextField text;
+	private List<JMenuItem> plugins;
+	private JMenu help;
+	private List<JMenuItem> helpMessages;
+	private FileChecker fc;
+	
+	public PluginsGraphics(){
+		this.fc=new FileChecker();
+		this.fc.addListener(new PluginListener());
+		this.menu=new JMenu("tools");
+		this.text=new JTextField();
+		this.help=new JMenu("help");
+		this.plugins=new ArrayList<JMenuItem>();
+		this.helpMessages=new ArrayList<JMenuItem>();
+		this.fc= new FileChecker();
+		this.fc.addListener(new PluginListener());
+	}
+	
+	public JFrame makeWindow(){ 
+		 JFrame f =new JFrame("Editeur Plugin");
+		 f.addWindowListener(new CloseWindowEvent());
+		 f.setLocation(300,200);
+		 Container content=new JPanel(new GridLayout(2,1));
+		 
+		 
+		 JPanel barre = new JPanel(new FlowLayout());
+		 JMenu file = new JMenu("File");
+		 barre.add(file);
+		 barre.add(this.menu);
+		 barre.add(this.help);
+		 
+		 content.add(barre);
+		 
+		 JScrollPane pane= new JScrollPane();
+		 pane.add(this.text);
+		 content.add(this.text);
+		 f.setContentPane(content);
+		 f.pack();
+		 return f;
+	 }
+	
+	
+	public static void main(String[] args){ 
+		PluginsGraphics pg = new PluginsGraphics();
+		JFrame f= pg.makeWindow();
+		f.setVisible(true);
+		
+		
+	}
+
+	private class CloseWindowEvent extends WindowAdapter {
+		public void windowClosing(java.awt.event.WindowEvent e) {
+  			System.exit(0);
+		}
+	}
+	
+	private class ChangePluginListener implements ActionListener{
+
+		public void actionPerformed(ActionEvent e) {
+			String text = PluginsGraphics.this.text.getText();
+			//appliquer transform sur text
+			PluginsGraphics.this.text.setText(text);
+			
+			
+		}
+		
+	}
+	
+	private class GetHelpListener implements ActionListener{
+
+		public void actionPerformed(ActionEvent e) {
+			JFrame popup = new JFrame("Help");
+			popup.addWindowListener(new CloseWindowEvent());
+			Container content = new JPanel();
+			content.add(new JLabel("help du plugin"));
+			popup.setContentPane(content);
+			popup.pack();
+			popup.setVisible(true);
+			
+		}
+		
+	}
+
+	private class PluginListener implements FileListener{
+		public void fileAdded(FileEvent e) {
+			JMenuItem item = PluginsGraphics.this.menu.add(e.getFilename());
+			PluginsGraphics.this.plugins.add(item);
+			item.addActionListener(new ChangePluginListener());
+			JMenuItem item2= PluginsGraphics.this.help.add(e.getFilename());
+			PluginsGraphics.this.helpMessages.add(item2);
+			item2.addActionListener(new GetHelpListener());
+			
+		}
+	
+		public void fileRemoved(FileEvent e) {
+			for(JMenuItem i : PluginsGraphics.this.plugins){
+				if(i.getName().equals(e.getFilename().substring(0, e.getFilename().length()-6))){
+					PluginsGraphics.this.menu.remove(i);
+					PluginsGraphics.this.plugins.remove(i);
+				}
+			}
+			for(JMenuItem i : PluginsGraphics.this.helpMessages){
+				if(i.getName().equals(e.getFilename().substring(0, e.getFilename().length()-6))){
+					PluginsGraphics.this.help.remove(i);
+					PluginsGraphics.this.helpMessages.remove(i);
+				}
+			}
+		}
+	}	
+}

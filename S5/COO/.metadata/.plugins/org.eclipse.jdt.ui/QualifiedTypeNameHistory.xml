@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="game.Room"/>
+<fullyQualifiedTypeName name="game.characters.GameCharacter"/>
+<fullyQualifiedTypeName name="game.characters.Player"/>
+<fullyQualifiedTypeName name="game.characters.act.Act"/>
+<fullyQualifiedTypeName name="game.Affichable"/>
+<fullyQualifiedTypeName name="game.Direction"/>
+<fullyQualifiedTypeName name="game.characters.Monster"/>
+<fullyQualifiedTypeName name="game.items.LifePotion"/>
+<fullyQualifiedTypeName name="java.util.Set"/>
+<fullyQualifiedTypeName name="java.awt.Desktop.Action"/>
+<fullyQualifiedTypeName name="pool.actions.ActionFinishedException"/>
+<fullyQualifiedTypeName name="pool.actions.ActionState"/>
+<fullyQualifiedTypeName name="java.util.NoSuchElementException"/>
+<fullyQualifiedTypeName name="pool.actions.ActionTest"/>
+<fullyQualifiedTypeName name="pool.resourcePool.resource.Resource"/>
+<fullyQualifiedTypeName name="pool.resourcePool.ResourcePool"/>
+<fullyQualifiedTypeName name="org.junit.Test"/>
+<fullyQualifiedTypeName name="pool.actions.Action"/>
+<fullyQualifiedTypeName name="pool.resourcePool.BasketPool"/>
+<fullyQualifiedTypeName name="pool.resourcePool.resource.Basket"/>
+<fullyQualifiedTypeName name="quizz.question.Question"/>
+<fullyQualifiedTypeName name="quizz.answer.AnswerFactory"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="quizz.answer.TextAnswer"/>
+<fullyQualifiedTypeName name="java.io.BufferedReader"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="org.junit.Before"/>
+<fullyQualifiedTypeName name="org.junit.Assert"/>
+<fullyQualifiedTypeName name="quizz.answer.Answer"/>
+<fullyQualifiedTypeName name="java.io.PrintStream"/>
+<fullyQualifiedTypeName name="java.util.EventObject"/>
+<fullyQualifiedTypeName name="java.util.EventListener"/>
+<fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
+<fullyQualifiedTypeName name="fileEvent.FileChecker"/>
+<fullyQualifiedTypeName name="filter.DirectoryInspector"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.LinkedList"/>
+<fullyQualifiedTypeName name="fileEvent.FileListener"/>
+<fullyQualifiedTypeName name="java.io.FilenameFilter"/>
+<fullyQualifiedTypeName name="filter.DirectoryInspectorPluginFilter"/>
+<fullyQualifiedTypeName name="javax.swing.JFrame"/>
+<fullyQualifiedTypeName name="java.awt.event.WindowAdapter"/>
+<fullyQualifiedTypeName name="java.awt.GridLayout"/>
+<fullyQualifiedTypeName name="pluginFin.PluginsGraphics"/>
+</qualifiedTypeNameHistroy>

@@ -1,0 +1,54 @@
+package pluginFin;
+
+import java.awt.*;
+import java.awt.event.*;
+
+import javax.swing.*;
+
+import fileEvent.FileEvent;
+import fileEvent.FileListener;
+
+public class PluginsGraphics {
+	
+	private FileChecker fc;
+	
+	
+	public PluginsGraphics(){
+		this.fc=new FileChecker();
+		this.fc.addListener(new PluginListener());
+
+		
+	}
+	
+	public JFrame makeWindow(){ 
+		 JFrame f =new JFrame("Editeur Plugin");
+		 f.addWindowListener(new CloseWindowEvent());
+		 f.setLocation(300,200);
+		 Container content=new JPanel(new GridLayout(2,1));
+		 JMenu menu=new JMenu();
+		 content.add();
+		 return f;
+	 }
+	
+	
+	public static void main(String[] args){ 
+	}
+
+	private class CloseWindowEvent extends WindowAdapter {
+		public void windowClosing(java.awt.event.WindowEvent e) {
+  			System.exit(0);
+		}
+	}
+
+	private class PluginListener implements FileListener{
+		public void fileAdded(FileEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+	
+		public void fileRemoved(FileEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+	}	
+}

@@ -1,0 +1,7 @@
+package pluginFin;
+
+import fileEvent.*;
+
+public class SimplePluginObserver implements FileListener{
+
+}

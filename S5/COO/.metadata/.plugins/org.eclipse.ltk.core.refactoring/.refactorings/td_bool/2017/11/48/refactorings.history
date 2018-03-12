@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;TestQ2.java&apos; to &apos;td_bool&apos;" description="Move &apos;TestQ2.java&apos; to &apos;td_bool&apos;" destination="/td_bool" element1="reduction/TestQ2.java" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1512037724771" updateReferences="true"/>
+</session>

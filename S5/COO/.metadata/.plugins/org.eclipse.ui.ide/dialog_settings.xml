@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="/home/l3/rocher/Personnel/AEL/AEL/td_bool"/>
+		<item value="/home/l3/rocher/Personnel/AEL/AEL/tdm6_ROCHER_KOUCHADE"/>
+		<item value="/home/l3/rocher/Personnel/AEL/AEL/tdm8_ROCHER_KOUCHADE/ael"/>
+		<item value="/home/l3/rocher/Personnel/AEL/AEL/TP6/ael"/>
+		<item value="/home/l3/rocher/Personnel/AEL/TP5/ael"/>
+		<item value="/home/l3/rocher/Téléchargements/TP3/tpKMP"/>
+		<item value="/home/l3/rocher/Personnel/AEL/AEL/tdm3_fichiers/tpKMP"/>
+	</list>
+	<section name="ExternalProjectImportWizard">
+	</section>
+	<section name="NewWizardAction">
+	</section>
+</section>

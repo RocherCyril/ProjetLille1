@@ -1,0 +1,24 @@
+package pluginFin;
+
+import fileEvent.FileEvent;
+import fileEvent.FileListener;
+
+public class PluginsGraphics {
+	
+	public PluginsGraphics(){
+		new PluginListener();
+	}
+	
+
+	private class PluginListener implements FileListener{
+		public void fileAdded(FileEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+	
+		public void fileRemoved(FileEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+	}	
+}

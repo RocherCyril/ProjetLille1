@@ -1,0 +1,16 @@
+package pluginFin;
+
+import fileEvent.*;
+
+public class SimplePluginObserver implements FileListener{
+
+	public void fileAdded(FileEvent e) {
+		System.out.println("The file " + e.getFilename() + " has been added");			
+	}
+
+	public void fileRemoved(FileEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

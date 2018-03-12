@@ -1,0 +1,37 @@
+package pluginFin;
+
+import javax.swing.*;
+
+import fileEvent.FileEvent;
+import fileEvent.FileListener;
+
+public class PluginsGraphics {
+	
+	private FileChecker fc;
+	
+	
+	public PluginsGraphics(){
+		this.fc=new FileChecker();
+		this.fc.addListener(new PluginListener());
+		
+	}
+	
+	 public static void main(String[] args){ 
+		 JFrame f = graph.makeWindow();
+			
+			
+		 }
+	
+
+	private class PluginListener implements FileListener{
+		public void fileAdded(FileEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+	
+		public void fileRemoved(FileEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+	}	
+}

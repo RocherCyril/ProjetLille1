@@ -1,0 +1,34 @@
+package filter;
+
+import java.io.*;
+import java.util.*;
+
+public class DirectoryInspectorPluginFilter {
+	private FilenameFilter startWithCFilter;
+	private FilenameFilter classFilter;
+	private File directory;
+	
+	public DirectoryInspectorPluginFilter(String name){
+		this.directory=new File(name);
+		this.startWithCFilter=new FilterC();
+		this.classFilter=new FilterClass();
+	}
+	
+	public List<String> getFilesWhichStartWithC(){
+		List<String> res=new LinkedList<String>();
+		String[] l=this.directory.list(this.startWithCFilter);
+		for(int i=0;i<l.length;i++){
+			res.add(l[i]);
+		}
+		return res;
+	}
+	
+	public List<String> getClassFiles(){
+		List<String> res=new LinkedList<String>();
+		String[] l=this.directory.list(this.classFilter);
+		for(int i=0;i<l.length;i++){
+			res.add(l[i]);
+		}
+		return res;
+	}
+}

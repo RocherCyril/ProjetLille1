@@ -1,0 +1,120 @@
+---> le schema de la relation etudiants est: STUDENT(SID,NAME,CITY,MAJOR)
+---> afficher la table etudiants et son contenu
+
+student;
+
+
+---> la base contient deux autres relations: EXAM et CLASS
+---> schemas:
+---> EXAM(SID,CLASS,DATE,GRADE)
+------> la note d'un etudiants concret dans l'examen d'une matiere, a une certaine date
+
+---> CLASS(CID,TITLE,TEACHER)
+------> l'identifiant et nom d'un cours, et le nom de l'enseignant
+
+exam;
+
+class;
+
+---> OPERATEUR SELECT
+---> selectionner les etudiants de prenom Celine
+select[name='Celine']student;
+---> erreur syntaxique. il faut ajouter des parentheses autour de la relation!
+
+
+---> correction du bug
+select[name='Celine'](student);
+
+---------------------------------->
+---> selectionner les etudiants en informatique ('Inf')
+select[major='Inf'](student);
+
+---> selectionner les etudiants en informatique ('Inf') de Lille
+select[major='Inf' and city='Lille'](student);
+
+---> REMARQUE IMPORTANTE: 
+---> des operateurs booleens, uniquement AND est implanté en RA.
+---> il faut utiliser le mot-cle AND 
+
+---> OPERATEUR PROJECT
+
+---> les noms et matieres des etudiants
+project[name,major](student);
+
+
+---> REMARQUE IMPORTANTE: si on selection plus d'une colonne,
+---- ont separe  par des virgules!
+---> BUG:
+project[name and major](student);
+
+
+
+---> dans la requete suivante, observez l'elimination des doublons:
+project[major](student);
+
+--> vous voyez 1x Inf alors que deux etudiants informaticiens sont dans la table. 
+
+---> intersection: les informaticiens lillois
+
+select[city='Lille'](student)
+intersect
+select[major='Inf'](student) ;
+
+
+----> union: les etudiants qui sont informaticiens, ou lillois, ou meme les deux en meme temps
+
+select[major='Inf'](student) 
+union 
+select[city='Lille'](student);
+
+-> notez que (415,Celine,Lille,Inf) n'apparait qu'une seule fois, alors qu'elle fait part des resultats des deux sous-requetes.
+-> encore: pas de doublons, puisqu'en algebre, nous considerons des ENSEMBLES (chaque element n'apparait qu'une fois)
+
+-> observons la COMMUTATIVITE de l'union: 
+select[city='Lille'](student)
+union
+select[major='Inf'](student) ;
+
+-> dans la logique ensemblistes, les resultats sont equivalents, meme si l'ordre d'affichage differe. les elements d'un ensemble ne sont pas ordonnes!
+
+---> BUG pour montrer  ce que signifie la COMPATIBILITE de tableaux: 
+---> ici, nous voulons faire l'union de deux tableaux.
+
+project[city](student) union project[sid](student);
+----> discutez la reponse du systeme avec votre binome.
+
+-----> DIFFERENCE:
+
+select[major='Inf'](student) 
+minus
+select[city='Lille'](student);
+
+-> expliquez en francais ce qu'on obtient!
+
+
+-> expliquez pourquoi la requete suivante donne un autre resultat:
+
+select[city='Lille'](student)
+minus
+select[major='Inf'](student) ;
+
+* produit cartesien: fait toutes les combinaisons possibles
+
+student times exam;
+
+* jointure: JOIN dans RA est la jointure natuelle 
+
+student join exam;
+
+----->  pour obtenir le meme resultat sans jointure dans RA, qui n'implemente pas le renommage de tableaux ni permet l'utilisation de la notation poitillee, il faut une astuce.
+
+student times rename[esid,class,date,grade](exam);
+
+select[sid=esid](student times rename[esid,class,date,grade](exam));
+
+
+------> RENOMMAGE: en theorie, trois variantes: 
+----> renommer relation, attributs, ou les deux
+----> REALITE DE RA: l'outil n'offre que le renommage d'attributs, 
+pas de relations.
+

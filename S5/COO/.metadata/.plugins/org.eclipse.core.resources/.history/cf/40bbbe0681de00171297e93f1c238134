@@ -1,0 +1,39 @@
+package filter;
+
+import java.io.File;
+import java.io.FilenameFilter;
+
+public class PluginFilter implements FilenameFilter {
+
+	public boolean accept(File dir, String name) {
+		boolean res=true;
+		String s=name.substring(name.length()-6);
+		if(!s.equals(".class")){
+			res=false;
+		}
+		else{
+			try {
+				Class<?> classTested=Class.forName(name.substring(0, name.length()-6));
+				Package packageTest = classTested.getPackage();
+				if(packageTest.getName()!="plugins"){
+					res=false;
+				}
+				else{
+					Class<?>[] interfaceTest=classTested.getInterfaces();
+					for(int i=0;i<interfaceTest.length;i++){
+						if(interfaceTest[i].getName()=="Plugin"){
+							return true;
+						}
+					}
+					res=false;
+				}
+			} catch (ClassNotFoundException e) {
+				res=false;
+
+				System.out.println(res + " " + name);
+			}
+		}
+		return res;
+	}
+
+}

@@ -1,0 +1,7 @@
+#include <stdio.h>
+#include <limits.h>
+#include <unistd.h>
+
+int main(){
+  printf("NAME_MAX: %d , PATH_MAX: %d",NAME_MAX,PATH_MAX);
+}

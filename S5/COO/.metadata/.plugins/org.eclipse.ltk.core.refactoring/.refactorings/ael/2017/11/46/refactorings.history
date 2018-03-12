@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;ael/src/automata/AutomataUtilsSkeleton.java&apos; to &apos;AutomataUtils.java&apos;" description="Rename resource &apos;AutomataUtilsSkeleton.java&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/automata/AutomataUtilsSkeleton.java" name="AutomataUtils.java" stamp="1510824624964" updateReferences="true"/>
+</session>

@@ -1,0 +1,94 @@
+package pluginFin;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.FilenameFilter;
+import java.util.LinkedList;
+import java.util.List;
+import javax.swing.*;
+
+import fileEvent.*;
+import filter.DirectoryInspector;
+
+public class FileChecker {
+	
+	private List<FileListener> listeners;
+	private Timer timer;
+	private List<String> memory;
+	private FilenameFilter filter;
+	
+	public FileChecker(){
+		this.timer=new Timer(1000,new FileActionListener());
+		this.listeners=new LinkedList<FileListener>();
+		this.memory=new LinkedList<String>();
+		this.addListener(new PluginListener());
+		this.addListener(new SimplePluginObserver());
+		this.filter=new PluginFilter();
+	}
+	
+	public void addListener(FileListener flistener){
+		this.listeners.add(flistener);
+	}
+	
+	public void removeListener(FileListener flistener){
+		this.listeners.remove(flistener);
+	}
+	
+	public void fireFileAdded(String name){
+		FileEvent fe=new FileEvent(name);
+		for(FileListener fl:this.listeners){
+			fl.fileAdded(fe);
+		}
+	}
+	
+	public void fireFileRemove(String name){
+		FileEvent fe=new FileEvent(name);
+		for(FileListener fl:this.listeners){
+			fl.fileRemoved(fe);
+		}
+	}
+	
+	public void start(){
+		this.timer.start();
+	}
+	
+	public void checkFiles(){
+		DirectoryInspector d=new DirectoryInspectorPluginFilter("src/main/java/repository/plugins",this.filter);
+		List<String> classfile=d.getClassFiles();
+		for(String s:memory){
+			if(!classfile.contains(s)){
+				this.memory.remove(s);
+				this.fireFileRemove(s);
+			}
+		}
+		for(String s:classfile){
+			if(!this.memory.contains(s)){
+				this.memory.add(s);
+				this.fireFileAdded(s);
+			}
+		}
+	}
+	
+	public List<String> getMemory(){
+		return this.memory;
+	}
+	
+	private class FileActionListener implements ActionListener{
+
+		public void actionPerformed(ActionEvent e) {
+			FileChecker.this.checkFiles();
+		}
+	}
+	
+	private class PluginListener implements FileListener{
+		public void fileAdded(FileEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void fileRemoved(FileEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+	}
+}

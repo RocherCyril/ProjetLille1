@@ -1,0 +1,17 @@
+package filter;
+
+import java.util.List;
+
+public class MainQ4 {
+	
+	public static void main(String[] args){
+		DirectoryInspector d=new DirectoryInspector("src/main/java/filter");
+		List<String> classfile=d.getClassFiles();
+		List<String> classC=d.getFilesWhichStartWithC();
+		for(String s:classfile){
+			if(classC.contains(s)){
+				System.out.println(s);
+			}
+		}
+	}
+}

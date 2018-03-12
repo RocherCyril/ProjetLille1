@@ -1,0 +1,13 @@
+ampl: var x1 >= 0;
+ampl: var x2 >= 0;
+ampl: maximize z : 25*x1 + 30*x2;
+ampl: subject to bandes : x1 <= 6000;
+ampl: subject to rouleaux : x2 <= 4000;
+ampl: subject to production : (1/200)*x1 + (1/140)*x2 <= 40;
+ampl: solve;
+MINOS 5.5: optimal solution found.
+2 iterations, objective 192000
+ampl: display z, x1, x2;
+z = 192000
+x1 = 6000
+x2 = 1400

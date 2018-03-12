@@ -1,0 +1,48 @@
+NOM : Rocher
+Prénom : Cyril
+Nom de la machine : (s'obtient en tapant la commande $ hostname) a13p18
+
+
+Q1) Fait : OUI
+
+Q2) Fait : OUI
+
+Sommet  Pred   Distance
+  A       E        1
+  B       L        1
+  C       K        1
+  D       A        0
+  E       H681539328
+
+
+**************
+Numéro de sommet incorrect 32766
+
+
+**************
+
+
+
+Q3) Fait : OUI
+
+Oui car on travaille avec des graphe non orienté, or si un proche sommet de s1 et s2 existe cela signifie que ce proche sommet a un arc entre chacun des deux, par conséquent on peut de s2 passer par le proche sommet et arriver a s1 et inversement.
+
+Q4) Fait : OUI
+
+d(s1,s2) est donc par conséquent minimal car s est au plus proche possible de s1 et s2.
+
+d(s,s1) + d(s,S2) est donc égale a d(s1,s2) est est donc également minimal.
+
+Q5) Fait : NON
+Je ne vois pas comment déterminer si un chemin existe entre s1 et s2.
+
+Q6) Fait : NON
+
+proche sommet entre A et G :
+proche sommet entre A et E :
+proche sommet entre A et A : (ça devrait être A)
+proche sommet entre C et L : 
+proche sommet entre C et E :
+proche sommet entre H et J :
+
+je n'ai pas pue tester car je n'ai pas réussi la fonction.
